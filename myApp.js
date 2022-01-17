@@ -13,6 +13,13 @@ app.use(function middleware(req, res, next) {
   next();
 });
 
+app.get('/now', function middleware(req, res, next) {
+  req.time = new Date().toString();
+  next();
+}, function(req, res) {
+  res.send({time: req.time});
+});
+
 app.get('/json', function (req, res) {
   if(process.env.MESSAGE_STYLE == 'uppercase') {
     res.json({"message": "HELLO JSON"})
