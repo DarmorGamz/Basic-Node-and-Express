@@ -17,6 +17,14 @@ app.get('/:word/echo', function(req, res) {
   res.send({echo: req.params.word});
 });
 
+app.get("/name", function(req, res) {
+  var firstName = req.query.first;
+  var lastName = req.query.last;
+  res.json({
+    name: `${firstName} ${lastName}`
+  });
+});
+
 app.get('/now', function middleware(req, res, next) {
   req.time = new Date().toString();
   next();
