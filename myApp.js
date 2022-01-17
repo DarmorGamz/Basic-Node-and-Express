@@ -13,6 +13,10 @@ app.use(function middleware(req, res, next) {
   next();
 });
 
+app.get('/:word/echo', function(req, res) {
+  res.send({echo: req.params.word});
+});
+
 app.get('/now', function middleware(req, res, next) {
   req.time = new Date().toString();
   next();
